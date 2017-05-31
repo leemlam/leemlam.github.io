@@ -1,1 +1,1 @@
-confirm("are you ready?");
+
