@@ -15,7 +15,7 @@ function upgrade(name) {
   if (name === "clicker cat") {
     if (money >= catcost) {
       moneyup += 1;
-      money -= upcost;
+      money -= catcost;
       catcost = catcost * 2;
       document.getElementById("cat").innerHTML = "clicker cat: " + catcost;}
     }
