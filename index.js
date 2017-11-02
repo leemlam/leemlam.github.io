@@ -3,7 +3,7 @@ moneyup = 1;
 
 upcost = 15;
 catcost = 25;
-workercost = 100;
+workercost = 250;
 
 function clicked() {
   money += moneyup;
@@ -22,10 +22,10 @@ function upgrade(name) {
     
     if (name === "worker") {
       if (money >= workercost) {
-        moneyup += 10;
+        moneyup += 25;
         money -= workercost;
-        workercost = workercost * 2;
-        document.getElementById("upgrade").innerHTML = "worker: " + workercost;}
+        workercost = workercost * 3;
+        document.getElementById("worker").innerHTML = "worker: " + workercost;}
       }
       
       if (name === "upgrade") {
