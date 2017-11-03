@@ -4,7 +4,6 @@ msec = 0;
 upcost = 15;
 catcost = 25;
 workercost = 250;
-
 var myVar = setInterval(myTimer, 1000);
 
 function myTimer() {
@@ -29,7 +28,7 @@ function upgrade(name) {
 
   if (name === "worker") {
     if (money >= workercost) {
-      msec += 5;
+      msec += 15;
       money -= workercost;
       workercost = workercost * 3;
       document.getElementById("worker").innerHTML = "worker: " + workercost;
