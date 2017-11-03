@@ -41,7 +41,7 @@ function upgrade(name) {
       moneyup += upcost / 15;
       money -= upcost;
       upcost = upcost * 5;
-      document.getElementById("upgrade").innerHTML = "upgrade: " + upcost;
+      document.getElementById("upgrade").innerHTML = "main upgrade: " + upcost;
     }
   }
 
