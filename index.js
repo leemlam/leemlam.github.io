@@ -8,12 +8,12 @@ var myVar = setInterval(myTimer, 1000);
 
 function myTimer() {
     money += msec;
-    document.getElementById("total").innerHTML = "LB: " + money;
+    document.getElementById("total").innerHTML = "$" + money;
     }
 
 function clicked() {
   money += moneyup;
-  document.getElementById("total").innerHTML = "LB: " + money;
+  document.getElementById("total").innerHTML = "$" + money;
 }
 
 function upgrade(name) {
@@ -44,6 +44,6 @@ function upgrade(name) {
     }
   }
 
-  document.getElementById("click").innerHTML = "LB/click: " + moneyup + " | LB/sec: " + msec;
-  document.getElementById("total").innerHTML = "LB: " + money;
+  document.getElementById("click").innerHTML = "$/click: " + moneyup + " | $/sec: " + msec;
+  document.getElementById("total").innerHTML = "$" + money;
 }
