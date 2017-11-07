@@ -9,6 +9,9 @@ workerown = 0
 upown = 0
 var myVar = setInterval(myTimer, 1000);
 
+document.addEventListener('gesturestart', function (e) {e.preventDefault();});
+
+
 function myTimer() {
     money += msec;
     document.getElementById("total").innerHTML = "LB: " + money;
