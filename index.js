@@ -16,6 +16,17 @@ function reloadall() {
   document.getElementById("upgrade").innerHTML = upown + "-main upgrade: " + upcost;
 }
 
+money = 0;money = parseInt(localStorage.getItem("money"));
+moneyup = parseInt(localStorage.getItem("moneyup"));
+msec = parseInt(localStorage.getItem("msec"));
+upcost = parseInt(localStorage.getItem("upcost"));
+catcost = parseInt(localStorage.getItem("catcost"));
+workercost = parseInt(localStorage.getItem("workercost"));
+catown = parseInt(localStorage.getItem("catown"));
+workerown = parseInt(localStorage.getItem("workerown"));
+upown = parseInt(localStorage.getItem("upown"));
+reloadall()
+
 var myVar = setInterval(myTimer, 1000);
 
 function save() {
@@ -42,7 +53,20 @@ function load() {
   upown = parseInt(localStorage.getItem("upown"));
   reloadall()
 }
-
+function reset() {
+  if (confirm("Are you sure you want to reset?") === true) {
+    money = 0;
+    moneyup = 1;
+    msec = 0;
+    upcost = 15;
+    catcost = 25;
+    workercost = 250;
+    catown = 0;
+    workerown = 0;
+    upown = 0;
+    reloadall()
+  }
+}
 function myTimer() {
   money += msec;
   document.getElementById("total").innerHTML = "LB: " + money;
