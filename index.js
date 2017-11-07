@@ -4,12 +4,19 @@ msec = 0;
 upcost = 15;
 catcost = 25;
 workercost = 250;
-catown = 0
-workerown = 0
-upown = 0
-var myVar = setInterval(myTimer, 1000);
+catown = 0;
+workerown = 0;
+upown = 0;
 
-document.addEventListener('gesturestart', function (e) {e.preventDefault();});
+function reloadall() {
+  document.getElementById("click").innerHTML = "LB/click: " + moneyup + " | LB/sec: " + msec;
+  document.getElementById("total").innerHTML = "LB: " + money;
+  document.getElementById("cat").innerHTML = catown + "-clicker cat: " + catcost;
+  document.getElementById("worker").innerHTML = workerown + "-worker: " + workercost;
+  document.getElementById("upgrade").innerHTML = upown + "-main upgrade: " + upcost;
+}
+
+var myVar = setInterval(myTimer, 1000);
 
 function save() {
   localStorage.setItem("money", money);
@@ -24,26 +31,22 @@ function save() {
 }
 
 function load() {
-  money = localStorage.getItem("money");
-  moneyup = localStorage.getItem("moneyup");
-  msec = localStorage.getItem("msec");
-  upcost = localStorage.getItem("upcost");
-  catcost = localStorage.getItem("catcost");
-  workercost = localStorage.getItem("workercost");
-  catown = localStorage.getItem("catown");
-  workerown = localStorage.getItem("workerown");
-  upown = localStorage.getItem("upown");
-  document.getElementById("click").innerHTML = "LB/click: " + moneyup + " | LB/sec: " + msec;
-  document.getElementById("total").innerHTML = "LB: " + money;
-  document.getElementById("cat").innerHTML = catown + "-clicker cat: " + catcost;
-  document.getElementById("worker").innerHTML = workerown + "-worker: " + workercost;
-  document.getElementById("upgrade").innerHTML = upown + "-main upgrade: " + upcost;
+  money = parseInt(localStorage.getItem("money"));
+  moneyup = parseInt(localStorage.getItem("moneyup"));
+  msec = parseInt(localStorage.getItem("msec"));
+  upcost = parseInt(localStorage.getItem("upcost"));
+  catcost = parseInt(localStorage.getItem("catcost"));
+  workercost = parseInt(localStorage.getItem("workercost"));
+  catown = parseInt(localStorage.getItem("catown"));
+  workerown = parseInt(localStorage.getItem("workerown"));
+  upown = parseInt(localStorage.getItem("upown"));
+  reloadall()
 }
 
 function myTimer() {
-    money += msec;
-    document.getElementById("total").innerHTML = "LB: " + money;
-    }
+  money += msec;
+  document.getElementById("total").innerHTML = "LB: " + money;
+}
 
 function clicked() {
   money += moneyup;
@@ -52,22 +55,24 @@ function clicked() {
 
 function upgrade(name) {
   if (name === "clicker cat") {
-    if (money >= catcost) {
+    if (money >= money) {
       msec += 1;
-      catown += 1
+      catown += 1;
       money -= catcost;
       catcost = catcost * 2;
-      document.getElementById("cat").innerHTML = catown + "-clicker cat: " + catcost;
+      document.getElementById("cat").innerHTML =
+        catown + "-clicker cat: " + catcost;
     }
   }
 
   if (name === "worker") {
     if (money >= workercost) {
       msec += 15;
-      workerown += 1
+      workerown += 1;
       money -= workercost;
       workercost = workercost * 3;
-      document.getElementById("worker").innerHTML = workerown + "-worker: " + workercost;
+      document.getElementById("worker").innerHTML =
+        workerown + "-worker: " + workercost;
     }
   }
 
@@ -75,12 +80,14 @@ function upgrade(name) {
     if (money >= upcost) {
       moneyup += upcost / 15;
       money -= upcost;
-      upown += 1
+      upown += 1;
       upcost = upcost * 5;
-      document.getElementById("upgrade").innerHTML = upown + "-main upgrade: " + upcost;
+      document.getElementById("upgrade").innerHTML =
+        upown + "-main upgrade: " + upcost;
     }
   }
 
-  document.getElementById("click").innerHTML = "LB/click: " + moneyup + " | LB/sec: " + msec;
+  document.getElementById("click").innerHTML =
+    "LB/click: " + moneyup + " | LB/sec: " + msec;
   document.getElementById("total").innerHTML = "LB: " + money;
 }
