@@ -4,6 +4,9 @@ msec = 0;
 upcost = 15;
 catcost = 25;
 workercost = 250;
+catown = 0
+workerown = 0
+upown = 0
 var myVar = setInterval(myTimer, 1000);
 
 function myTimer() {
@@ -18,20 +21,22 @@ function clicked() {
 
 function upgrade(name) {
   if (name === "clicker cat") {
-    if (money >= catcost) {
+    if (money >= money) {
       msec += 1;
+      catown += 1
       money -= catcost;
       catcost = catcost * 2;
-      document.getElementById("cat").innerHTML = "clicker cat: " + catcost;
+      document.getElementById("cat").innerHTML = catown + "-clicker cat: " + catcost;
     }
   }
 
   if (name === "worker") {
     if (money >= workercost) {
       msec += 15;
+      workerown += 1
       money -= workercost;
       workercost = workercost * 3;
-      document.getElementById("worker").innerHTML = "worker: " + workercost;
+      document.getElementById("worker").innerHTML = workerown + "-worker: " + workercost;
     }
   }
 
@@ -39,8 +44,9 @@ function upgrade(name) {
     if (money >= upcost) {
       moneyup += upcost / 15;
       money -= upcost;
+      upown += 1
       upcost = upcost * 5;
-      document.getElementById("upgrade").innerHTML = "main upgrade: " + upcost;
+      document.getElementById("upgrade").innerHTML = upown + "-main upgrade: " + upcost;
     }
   }
 
