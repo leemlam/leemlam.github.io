@@ -21,7 +21,7 @@ function clicked() {
 
 function upgrade(name) {
   if (name === "clicker cat") {
-    if (money >= money) {
+    if (money >= catcost) {
       msec += 1;
       catown += 1
       money -= catcost;
