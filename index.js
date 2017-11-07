@@ -60,8 +60,7 @@ function upgrade(name) {
       catown += 1;
       money -= catcost;
       catcost = catcost * 2;
-      document.getElementById("cat").innerHTML =
-        catown + "-clicker cat: " + catcost;
+      reloadall()
     }
   }
 
@@ -71,8 +70,7 @@ function upgrade(name) {
       workerown += 1;
       money -= workercost;
       workercost = workercost * 3;
-      document.getElementById("worker").innerHTML =
-        workerown + "-worker: " + workercost;
+      reloadall()
     }
   }
 
@@ -82,12 +80,10 @@ function upgrade(name) {
       money -= upcost;
       upown += 1;
       upcost = upcost * 5;
-      document.getElementById("upgrade").innerHTML =
-        upown + "-main upgrade: " + upcost;
+      reloadall()
     }
   }
 
-  document.getElementById("click").innerHTML =
-    "LB/click: " + moneyup + " | LB/sec: " + msec;
+  document.getElementById("click").innerHTML = "LB/click: " + moneyup + " | LB/sec: " + msec;
   document.getElementById("total").innerHTML = "LB: " + money;
 }
