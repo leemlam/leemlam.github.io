@@ -11,6 +11,34 @@ var myVar = setInterval(myTimer, 1000);
 
 document.addEventListener('gesturestart', function (e) {e.preventDefault();});
 
+function save() {
+  localStorage.setItem(money);
+  localStorage.setItem(moneyup);
+  localStorage.setItem(msec);
+  localStorage.setItem(upcost);
+  localStorage.setItem(catcost);
+  localStorage.setItem(workercost);
+  localStorage.setItem(catown);
+  localStorage.setItem(workerown);
+  localStorage.setItem(upown);
+}
+
+function load() {
+  money = localStorage.getItem(money);
+  moneyup = localStorage.getItem(moneyup);
+  msec = localStorage.getItem(msec);
+  upcost = localStorage.getItem(upcost);
+  catcost = localStorage.getItem(catcost);
+  workercost = localStorage.getItem(workercost);
+  catown = localStorage.getItem(catown);
+  workerown = localStorage.getItem(workerown);
+  upown = localStorage.getItem(upown);
+  document.getElementById("click").innerHTML = "LB/click: " + moneyup + " | LB/sec: " + msec;
+  document.getElementById("total").innerHTML = "LB: " + money;
+  document.getElementById("cat").innerHTML = catown + "-clicker cat: " + catcost;
+  document.getElementById("worker").innerHTML = workerown + "-worker: " + workercost;
+  document.getElementById("upgrade").innerHTML = upown + "-main upgrade: " + upcost;
+}
 
 function myTimer() {
     money += msec;
