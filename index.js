@@ -16,6 +16,17 @@ function reloadall() {
   document.getElementById("upgrade").innerHTML = upown + "-main upgrade: " + upcost;
 }
 
+money = parseInt(localStorage.getItem("money"));
+moneyup = parseInt(localStorage.getItem("moneyup"));
+msec = parseInt(localStorage.getItem("msec"));
+upcost = parseInt(localStorage.getItem("upcost"));
+catcost = parseInt(localStorage.getItem("catcost"));
+workercost = parseInt(localStorage.getItem("workercost"));
+catown = parseInt(localStorage.getItem("catown"));
+workerown = parseInt(localStorage.getItem("workerown"));
+upown = parseInt(localStorage.getItem("upown"));
+reloadall()
+
 function save() {
   localStorage.setItem("money", money);
   localStorage.setItem("moneyup", moneyup);
@@ -26,11 +37,9 @@ function save() {
   localStorage.setItem("catown", catown);
   localStorage.setItem("workerown", workerown);
   localStorage.setItem("upown", upown);
-  localstorage.setitem("save", 1);
 }
 
 function load() {
-  if (localStorage.getItem("save") === 1) {
   money = parseInt(localStorage.getItem("money"));
   moneyup = parseInt(localStorage.getItem("moneyup"));
   msec = parseInt(localStorage.getItem("msec"));
@@ -40,12 +49,8 @@ function load() {
   catown = parseInt(localStorage.getItem("catown"));
   workerown = parseInt(localStorage.getItem("workerown"));
   upown = parseInt(localStorage.getItem("upown"));
-  reloadall();
- }
+  reloadall()
 }
-
-load();
-
 function reset() {
   if (confirm("Are you sure you want to reset?") === true) {
     money = 0;
@@ -57,15 +62,15 @@ function reset() {
     catown = 0;
     workerown = 0;
     upown = 0;
-    reloadall();
+    reloadall()
   }
 }
 
-function Timer() {
+function myTimer() {
   money += msec;
   document.getElementById("total").innerHTML = "LB: " + money;
 }
-var myVar = setInterval(Timer, 1000);
+var myVar = setInterval(myTimer, 1000);
 function clicked() {
   money += moneyup;
   document.getElementById("total").innerHTML = "LB: " + money;
@@ -73,11 +78,13 @@ function clicked() {
 
 function upgrade(name) {
   if (name === "clicker cat") {
-    if (money >= catcost) {
+    if (money >= money) {
       msec += 1;
       catown += 1;
       money -= catcost;
       catcost = catcost * 2;
+      document.getElementById("cat").innerHTML =
+        catown + "-clicker cat: " + catcost;
     }
   }
 
@@ -87,6 +94,8 @@ function upgrade(name) {
       workerown += 1;
       money -= workercost;
       workercost = workercost * 3;
+      document.getElementById("worker").innerHTML =
+        workerown + "-worker: " + workercost;
     }
   }
 
@@ -96,4 +105,11 @@ function upgrade(name) {
       money -= upcost;
       upown += 1;
       upcost = upcost * 5;
-    }}reloadall()}
+      document.getElementById("upgrade").innerHTML =
+        upown + "-main upgrade: " + upcost;
+    }
+  }
+
+  document.getElementById("click").innerHTML = "LB/click: " + moneyup + " | LB/sec: " + msec;
+  document.getElementById("total").innerHTML = "LB: " + money;
+}
