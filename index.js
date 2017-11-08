@@ -8,6 +8,8 @@ catown = 0;
 workerown = 0;
 upown = 0;
 
+
+
 function reloadall() {
   document.getElementById("click").innerHTML = "LB/click: " + moneyup + " | LB/sec: " + msec;
   document.getElementById("total").innerHTML = "LB: " + money;
@@ -40,7 +42,6 @@ function load() {
   upown = parseInt(localStorage.getItem("upown"));
   reloadall()
 }
-
 function reset() {
   if (confirm("Are you sure you want to reset?") === true) {
     money = 0;
@@ -60,8 +61,7 @@ function myTimer() {
   money += msec;
   document.getElementById("total").innerHTML = "LB: " + money;
 }
-
-var myVar = setInterval(myTimer, 1000);
+setInterval(myTimer, 1000);
 
 function clicked() {
   money += moneyup;
@@ -71,23 +71,27 @@ function clicked() {
 function upgrade(name) {
   if (name === "clicker cat") {
     if (money >= catcost) {
-      msec += 1;
+      if (catown < 10) {msec += 1;} 
+      else if (catown < 25) {msec += 50} 
+      else if (catown < 50) {msec += 5000}
+      else {msec += 15000}
       catown += 1;
       money -= catcost;
       catcost = catcost * 2;
-      document.getElementById("cat").innerHTML =
-        catown + "-clicker cat: " + catcost;
+      document.getElementById("cat").innerHTML = catown + "-clicker cat: " + catcost;
     }
   }
 
   if (name === "worker") {
     if (money >= workercost) {
-      msec += 15;
+      if (workerown < 10) {msec += 15;} 
+      else if (workerown < 25) {msec += 150} 
+      else if (workerown < 50) {msec += 15000}
+      else {msec += 150000}
       workerown += 1;
       money -= workercost;
       workercost = workercost * 3;
-      document.getElementById("worker").innerHTML =
-        workerown + "-worker: " + workercost;
+      document.getElementById("worker").innerHTML = workerown + "-worker: " + workercost;
     }
   }
 
@@ -97,8 +101,7 @@ function upgrade(name) {
       money -= upcost;
       upown += 1;
       upcost = upcost * 5;
-      document.getElementById("upgrade").innerHTML =
-        upown + "-main upgrade: " + upcost;
+      document.getElementById("upgrade").innerHTML = upown + "-main upgrade: " + upcost;
     }
   }
 
